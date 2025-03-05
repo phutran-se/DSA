@@ -27,7 +27,7 @@ def binSearch(A, needle):
     found = -1
     lowerBound = 0
     higherBound = len(A)-1
-    while found == -1 and lowerBound <= higherBound: 
+    while (found == -1) and (lowerBound <= higherBound): 
         meanIndex = (lowerBound + higherBound)//2 # Get the mean index
         if A[meanIndex] < needle: 
             lowerBound = meanIndex + 1 # Target must be in the upper half
@@ -68,7 +68,7 @@ def insertionSort(A):
     for i in range(1, lenA):
         current = A[i]
         j = i
-        while (j > 0) and A[j] < A[j-1]: 
+        while (j > 0) and (A[j-1] > current): 
             A[j] = A[j-1]   # Shift elements to the right
             j -=1
         A[j] = current # Insert the current element at its correct position 
