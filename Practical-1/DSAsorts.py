@@ -48,11 +48,11 @@ def bubbleSort(A):
     lenA = len(A)
     isSorted = True # Flag for optimization
     i = 0 
-    while isSorted and i < (lenA-1):
+    while isSorted and i < (lenA - 1):
         isSorted = False            # Assume the list is sorted  
-        for j in range(lenA-i-1):
+        for j in range(lenA - i - 1):
             if A[j] > A[j+1]: 
-                A[j],A[j+1]=A[j+1],A[j] # Swap elements
+                A[j], A[j+1] = A[j+1], A[j] # Swap elements
                 isSorted = True # A swap occurred, so the list is not yet sorted
         i +=1
             
@@ -70,7 +70,7 @@ def insertionSort(A):
         j = i
         while (j > 0) and (A[j-1] > current): 
             A[j] = A[j-1]   # Shift elements to the right
-            j -=1
+            j -= 1
         A[j] = current # Insert the current element at its correct position 
 
 def selectionSort(A):
@@ -86,7 +86,7 @@ def selectionSort(A):
         for j in range(i, lenA):
             if A[j] < A[minIdx]:
                 minIdx = j # Update minIdx if a smaller element is found 
-        A[i], A[minIdx] = A[minIdx],A[i] # Swap the smallest element with A[i]
+        A[i], A[minIdx] = A[minIdx], A[i] # Swap the smallest element with A[i]
 
 def mergeSort(A):
     """ mergeSort - front-end for kick-starting the recursive algorithm
