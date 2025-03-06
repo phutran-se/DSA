@@ -1,5 +1,5 @@
 '''
-SortsTestHarness2.py - Sorting Test Cases
+SortsTestHarness2.py - Sorting Test Cases for Performance Testing
 
 Student 1: Phu Tran (21985654)
 Student 2: Minh Quoc Chau Cao (21803620)

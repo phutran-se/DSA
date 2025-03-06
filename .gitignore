@@ -1,4 +1,11 @@
 # Byte-compiled / optimized / DLL files
+
+Submit/
+
+# Office 
+*.pdf
+*.doc
+*.docx
 __pycache__/
 *.py[cod]
 *$py.class
