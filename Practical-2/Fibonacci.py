@@ -1,5 +1,5 @@
 """
-Fibonacci.py - Functions for Fibonacci
+Fibonacci.py - Functions for Fibonacci Calculation
 
 Student 1: Phu Tran (21985654)
 Student 2: Minh Quoc Chau Cao (21803620)
@@ -11,15 +11,20 @@ def fibonacci_iterative(n):
     """
     Calculate the nth Fibonacci number using iteration.
     
-    Args:
+    Parameters:
         n (int): The position in the Fibonacci sequence
         
     Returns:
         int: The nth Fibonacci number.
         
     Raises:
-        ValueError: If n is non-positive.
+        TypeError: If n is not an integer.
+        ValueError: If n is negative.
     """
+    
+    if not isinstance(n, int):
+        raise TypeError(f"Expected an interger but '{n}' is not an interger type") 
+
     if n <= 0: 
         raise ValueError("Fibonacci does not support for non-positive numbers")
 
@@ -36,15 +41,22 @@ def fibonacci_iterative_list(n):
     """
     Calculate the nth Fibonacci number using iteration.
     
-    Args:
+    Parameters:
         n (int): The position in the Fibonacci sequence
         
     Returns:
         list: The list of Fibonacci numbers.
         
     Raises:
-        ValueError: If n is non-positive.
+        TypeError: If n is not an integer.
+        ValueError: If n is negative.
     """
+    
+    # Type checking
+    if not isinstance(n, int):
+        raise TypeError(f"Expected an interger but '{n}' is not an interger type") 
+    
+    # Support ?
     if n <= 0: 
         raise ValueError("Fibonacci does not support for non-positive numbers")
 
@@ -62,15 +74,22 @@ def fibonacci_recursive(n):
     """
     Calculate the nth Fibonacci number using recursive.
     
-    Args:
+    Parameters:
         n (int): The position in the Fibonacci sequence
         
     Returns:
         int: The nth Fibonacci number.
         
     Raises:
-        ValueError: If n is non-positive.
+        TypeError: If n is not an integer.
+        ValueError: If n is negative.
     """
+    
+    # Type checking
+    if not isinstance(n, int):
+        raise TypeError(f"Expected an interger but '{n}' is not an interger type") 
+    
+    # Support ?
     if n <= 0: 
         raise ValueError("Fibonacci does not support for non-positive numbers")
     
@@ -83,15 +102,21 @@ def fibonacci_recursive_list(n):
     """
     Calculate the nth Fibonacci number using iteration.
     
-    Args:
+    Parameters:
         n (int): The position in the Fibonacci sequence
         
     Returns:
         list: The list of Fibonacci numbers.
         
     Raises:
-        ValueError: If n is non-positive.
+        TypeError: If n is not an integer.
+        ValueError: If n is negative.
     """
+    
+    # Type checking
+    if not isinstance(n, int):
+        raise TypeError(f"Expected an interger but '{n}' is not an interger type")
+    
     if n <= 0: 
         raise ValueError("Fibonacci does not support for non-positive numbers")
    
@@ -108,25 +133,29 @@ def fibonacci_recursive_list(n):
 
 # Test for Factorial Function
 print("*** Simple Test for Fibonacci Functions ***")
-val = 5
-print_info(f"> Fibonacci (Iterative) of {val}: ", fibonacci_iterative(val))
-print_info(f"> Fibonacci (Recursive) of {val}: ", fibonacci_recursive(val))
+for val in [7, "8"]:
+    try:
+        print_info(f"> Fibonacci (Iterative) of {val}: ", fibonacci_iterative(val))
+        print_info(f"> Fibonacci (Recursive) of {val}: ", fibonacci_recursive(val))
+        print()
+        print_info(f"> Fibonacci (Iterative) numbers of {val}: ", fibonacci_iterative_list(val))
+        print_info(f"> Fibonacci (Recursive) numbers of {val}: ", fibonacci_recursive_list(val))
+        print()
+    except Exception as e: 
+        print_error(f"ERROR: {e}")
 
-print_info(f"> Fibonacci (Iterative) numbers of {val}: ", fibonacci_iterative_list(val))
-print_info(f"> Fibonacci (Recursive) numbers of {val}: ", fibonacci_recursive_list(val))
-
-
+# Function to test from user input
 def test_fibonacci(list_all=False): 
     Stop = False
     while not Stop: 
         s = input("Enter a number to calculate fibonacci or 'exit' to stop: ")
         s = s.strip()
         if s == 'exit': 
-            print("Test stopped")
+            print_error("Test stopped")
             Stop = True
         else: 
             if not is_an_integer(s):
-                print_error(f"Expected an interger but '{s}' is not an interger")
+                print_error(f"Expected an interger but '{s}' is not an interger type")
             else:
                 try: 
                     n = int(s)
@@ -135,12 +164,13 @@ def test_fibonacci(list_all=False):
                         r2 = fibonacci_recursive(n)
                         print_info(f"> Fibonacci (Iterative) of {n}: ", r1)
                         print_info(f"> Fibonacci (Recursive) of {n}: ", r2)
+                        print()
                     else: 
                         l1 = fibonacci_iterative_list(n)
                         l2 = fibonacci_recursive_list(n)
                         print_info(f"> Fibonacci (Iterative) numbers of {n}: ", l1)
                         print_info(f"> Fibonacci (Recursive) numbers of {n}: ", l2)
-                    
+                        print()
                 except Exception as e: 
                     print_error(f"ERROR: {e}")
 
