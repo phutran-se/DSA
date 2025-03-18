@@ -9,7 +9,7 @@ EquationSolver.py - A program that can take a string representing a mathematical
                     equation in infix form and solve it by converting it into postfix and then evaluating the
                     postfix.
 Funct.py - Functions for print info and print error
-
+Test.py - testcases for DSAStack and DSAQueue classes 
 ## Dependencies
 none
  
