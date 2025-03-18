@@ -7,7 +7,7 @@ Factorial.py - Activity 1: implement the iterative and recursive functions for F
 Fibonacci.py - Activity 1: implement the iterative and recursive functions for Fibonnaci
 GCD.py - Activity 2:  implement the iterative and recursive functions for Greatest Common Denominator
 NumberConversions.py - Activity 3: implement the iterative and recursive functions for Number Conversions
-TowerofHanoi.py - Activity 4: implement the Towers of Hanoi algorithm
+TowerofHanoi.py - Activity 5: implement the Towers of Hanoi algorithm
 Utils.py - Functions for checking input validations, print info and print error
 
 ## Dependencies
