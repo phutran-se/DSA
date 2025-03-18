@@ -32,8 +32,7 @@ def test_dsa_stack():
     
     # Test peek
     assert stack.peek() == 2, "Test peek failed"
-    
-    print("All tests passed for DSAStack!")
+    print("All tests passed for DSAStack!\n")
 
 # Test ShufflingQueue
 def test_shuffling_queue():
@@ -58,8 +57,7 @@ def test_shuffling_queue():
     
     # Test peek
     assert queue.peek() == 2, "Test peek failed"
-    
-    print("All tests passed for ShufflingQueue!")
+    print("All tests passed for ShufflingQueue!\n")
 
 # Test CircularQueue
 def test_circular_queue():
@@ -84,8 +82,7 @@ def test_circular_queue():
     
     # Test peek
     assert queue.peek() == 2, "Test peek failed"
-    
-    print("All tests passed for CircularQueue!")
+    print("All tests passed for CircularQueue!\n")
 
 # Run the tests
 test_dsa_stack()
