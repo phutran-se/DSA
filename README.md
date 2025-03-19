@@ -12,3 +12,7 @@ Data Structure and Algorithms
 ### Week 3
 - Stack and Queue (Shuffling, Circular)
 - Equation Solver
+
+### Week 4 
+- Linked List
+- Implement DSAStack and DSAQueue with LinkedList
