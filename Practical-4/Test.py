@@ -27,15 +27,15 @@ def test_dsa_linked_list():
     # Test insert_last
     linked_list.insert_last(4)
     linked_list.insert_last(5)
-    linked_list.insert_last(6)
-    assert linked_list.tail.value == 6, "Test insert_last() failed"
+    linked_list.insert_last('1')
+    assert linked_list.tail.value == '1', "Test insert_last() failed"
     
     # Test remove_first
     assert linked_list.remove_first() == 3, "Test remove_first() failed"
     assert linked_list.head.value == 2, "Test remove_first() failed"
     
     # Test remove_last
-    assert linked_list.remove_last() == 6, "Test remove_last() failed"
+    assert linked_list.remove_last() == '1', "Test remove_last() failed"
     assert linked_list.tail.value == 5, "Test remove_last() failed"
     
     # Test peek_first

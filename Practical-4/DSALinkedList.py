@@ -93,7 +93,7 @@ class DSALinkedList:
     # Function to display the list
     def display(self):
         curr = self.head            # Start from the head
-        vals = []                   # List to store the values
+        vals = []                   # List to store the values !!! avoid list !!!
         while curr:                 # Iterate through the list (if not None)
             vals.append(curr.value) # Append the value to the list
             curr = curr.next        # Move to the next node
