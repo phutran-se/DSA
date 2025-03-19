@@ -1,5 +1,5 @@
 """
-Utils.py - Some ultil functions (print)
+Funct.py - Some ultil functions (print)
 
 Student 1: Phu Tran (21985654)
 Student 2: Minh Quoc Chau Cao (21803620)

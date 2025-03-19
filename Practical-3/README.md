@@ -9,7 +9,7 @@ Practical 03 of Data Structures and Algorithms COMP5008
                     equation in infix form and solve it by converting it into postfix and then evaluating the
                     postfix.
 - Funct.py - Functions for print info and print error
-- Test.py - testcases for DSAStack and DSAQueue classes 
+- Test.py - Test cases for DSAStack and DSAQueue classes 
 
 ## Dependencies
 none
