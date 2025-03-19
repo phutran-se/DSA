@@ -5,10 +5,13 @@ Student 1: Phu Tran (21985654)
 Student 2: Minh Quoc Chau Cao (21803620)
 """
 
+import numpy as np
+
+
 # Implement the DSAQueue class
 class DSAQueue:
     def __init__(self, capacity=100):
-        self.queue = [None] * capacity  # Initialize the queue with a list of None values
+        self.queue = np.empty(shape=capacity, dtype=object)  # Initialize the queue with a list of None values
         self.front = 0                  # Initialize the front of the queue
         self.rear = 0                   # Initialize the rear of the queue
         self.count = 0                  # Initialize the count of the queue
@@ -75,9 +78,9 @@ class CircularQueue(DSAQueue):
         return item
 
     def __str__(self):
-        parts = []
+        parts = ""                                      # Initialize the parts
         index = self.front                              # Start from the front
         for _ in range(self.count):                     # Loop through the queue
-            parts.append(self.queue[index])             # Add the item to the parts
+            parts += " " + str(self.queue[index])       # Add the item to the parts
             index = (index + 1) % self.capacity         # Move to the next item
         return str(parts)

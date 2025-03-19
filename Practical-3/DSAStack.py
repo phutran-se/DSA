@@ -5,9 +5,11 @@ Student 1: Phu Tran (21985654)
 Student 2: Minh Quoc Chau Cao (21803620)
 """
 
+import numpy as np 
+
 class DSAStack:
     def __init__(self, capacity=100):
-        self.stack = [None] * capacity          # Initialize the stack with a list of None values
+        self.stack = np.empty(shape=capacity, dtype=object)   # Initialize the stack with a list of None values
         self.top = -1
         self.capacity = capacity
     

@@ -8,6 +8,8 @@ Student 2: Minh Quoc Chau Cao (21803620)
 import sys
 from Funct import print_error, print_info
 from EquationSolver import solve_expression
+from DSAQueue import ShufflingQueue, CircularQueue
+from DSAStack import DSAStack
 
 def test_solve_expr(expression, preprocess_exp=False):
     """
@@ -27,6 +29,59 @@ def test_solve_expr(expression, preprocess_exp=False):
 # Example Test
 if __name__ == "__main__":
 
+    # Test DSAStack
+    print("\nTest DSAStack...")
+    stack = DSAStack(5)
+    stack.push(1)
+    stack.push(2)
+    print(stack)
+    stack.pop()
+    print(stack.is_empty())
+    print(stack.is_full())
+    print(stack.peek())
+    stack.pop()
+    print(stack.is_empty())
+    for i in range(5):
+        stack.push(i)
+    print(stack.is_full())
+
+    # Test ShufflingQueue
+    print("\nTest ShufflingQueue...")
+    queue = ShufflingQueue(5)
+    queue.enqueue(1)
+    queue.enqueue(2)
+    print(queue)
+    queue.dequeue()
+    print(queue)
+    print(queue.peek())
+    print(queue.is_empty())
+    print(queue.is_full())
+    queue.dequeue()
+    print(queue)
+    print(queue.is_empty())
+    for i in range(5):
+        queue.enqueue(i)
+    print(queue.is_full())
+   
+    # Test CircularQueue
+    print("\nTest CircularQueue...")
+    queue = CircularQueue(5)
+    queue.enqueue(1)
+    queue.enqueue(2)
+    print(queue)
+    queue.dequeue()
+    print(queue)
+    print(queue.peek())
+    print(queue.is_empty())
+    print(queue.is_full())
+    queue.dequeue()
+    print(queue)
+    print(queue.is_empty())
+    for i in range(5):
+        queue.enqueue(i)
+    print(queue.is_full())
+
+    # Test main program
     # Check if the -p flag is present for preprocessing
     preprocess_exp = '-p' in sys.argv
 
