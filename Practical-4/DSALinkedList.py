@@ -72,12 +72,24 @@ class DSALinkedList:
             raise Exception("List is empty")
         return self.head.value  # Return the value of the head
     
-    # Peek the last node
+    # Function to peek the last node
     def peek_last(self):  
         if self.is_empty():     # If the list is empty, raise an exception
             raise Exception("List is empty")
         return self.tail.value  # Return the value of the tail
     
+    # Function to find the first occurrence of a value
+    def find_first(self, value):
+        curr = self.head
+        index = 0
+        while curr:
+            if curr.value == value:
+                return index
+            curr = curr.next
+            index += 1
+            
+        return -1  # Return -1 if the value is not found
+
     # Function to display the list
     def display(self):
         curr = self.head            # Start from the head
