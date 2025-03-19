@@ -10,86 +10,86 @@ from DSAQueue import ShufflingQueue, CircularQueue
 from Funct import print_info, print_error
 import numpy as np
 
+
 # Test DSAStack
 def test_dsa_stack():
     print("Testing class DSAStack...")
     stack = DSAStack(5)
     
-    # Test is_empty
     assert stack.is_empty() == True, "Test is_empty() failed"
     
-    # Test push
     stack.push(1)
     stack.push(2)
     stack.push(3)
-    assert stack.stack == np.array([1, 2, 3, None, None]), "Test push() failed"
+    expected_stack = np.empty(5, dtype=object)
+    expected_stack[:3] = [1, 2, 3]
+    expected_stack[3:] = None
+    assert np.array_equal(stack.stack, expected_stack), "Test push() failed"
     
-    # Test is_full
     assert stack.is_full() == False, "Test is_full() failed"
     
-    # Test pop
     assert stack.pop() == 3, "Test pop() failed"
-    assert stack.stack == np.array([1, 2, None, None, None]), "Test pop() failed"
+    expected_stack[2] = None
+    assert np.array_equal(stack.stack, expected_stack), "Test pop() state failed"
     
-    # Test peek
     assert stack.peek() == 2, "Test peek() failed"
 
-    # Finally, print that all tests passed
-    print_info("All tests passed for DSAStack!\n")
+    print("All tests passed for DSAStack!\n")
 
 # Test ShufflingQueue
 def test_shuffling_queue():
     print("Testing class ShufflingQueue...")
     queue = ShufflingQueue(5)
     
-    # Test is_empty
     assert queue.is_empty() == True, "Test is_empty() failed"
     
-    # Test enqueue
     queue.enqueue(1)
     queue.enqueue(2)
     queue.enqueue(3)
-    assert queue.queue == np.array([1, 2, 3, None, None]), "Test enqueue() failed"
+    expected_queue = np.empty(5, dtype=object)
+    expected_queue[:3] = [1, 2, 3]
+    expected_queue[3:] = None
+    assert np.array_equal(queue.queue, expected_queue), "Test enqueue() failed"
     
-    # Test is_full
     assert queue.is_full() == False, "Test is_full() failed"
     
-    # Test dequeue
     assert queue.dequeue() == 1, "Test dequeue() failed"
-    assert queue.queue == np.array([2, 3, None, None, None]), "Test dequeue() failed"
     
-    # Test peek
+    # Fix: Shift elements left manually instead of incorrect slicing
+    expected_queue[0] = 2
+    expected_queue[1] = 3
+    expected_queue[2:] = None  # Ensure the rest of the queue is None
+    assert np.array_equal(queue.queue, expected_queue), "Test dequeue() failed"
+    
     assert queue.peek() == 2, "Test peek() failed"
 
-    # Finally, print that all tests passed
-    print_info("All tests passed for ShufflingQueue!\n")
+    print("All tests passed for ShufflingQueue!\n")
+
 
 # Test CircularQueue
 def test_circular_queue():
     print("Testing class CircularQueue...")
     queue = CircularQueue(5)
     
-    # Test is_empty
     assert queue.is_empty() == True, "Test is_empty() failed"
     
-    # Test enqueue
     queue.enqueue(1)
     queue.enqueue(2)
     queue.enqueue(3)
-    assert queue.queue == np.array([1, 2, 3, None, None]), "Test enqueue() failed"
+    expected_queue = np.empty(5, dtype=object)
+    expected_queue[:3] = [1, 2, 3]
+    expected_queue[3:] = None
+    assert np.array_equal(queue.queue, expected_queue), "Test enqueue() failed"
     
-    # Test is_full
     assert queue.is_full() == False, "Test is_full() failed"
     
-    # Test dequeue
     assert queue.dequeue() == 1, "Test dequeue() failed"
-    assert queue.queue == np.array([None, 2, 3, None, None]), "Test dequeue() failed"
+    expected_queue[0] = None
+    assert np.array_equal(queue.queue, expected_queue), "Test dequeue() failed"
     
-    # Test peek
     assert queue.peek() == 2, "Test peek() failed"
 
-    # Finally, print that all tests passed
-    print_info("All tests passed for CircularQueue!\n")
+    print("All tests passed for CircularQueue!\n")
 
 # Run the tests
 test_dsa_stack()
