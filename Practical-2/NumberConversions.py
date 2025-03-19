@@ -104,7 +104,7 @@ def test_convert_num():
             print_error("Test stopped")
             Stop = True
         else: 
-            sb = input("Enter a base value (b=): ").strip()
+            sb = input("Enter a base value (base=): ").strip()
             if sb == 'exit': 
                 print_error("Test stopped")
                 Stop = True
