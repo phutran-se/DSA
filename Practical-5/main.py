@@ -19,7 +19,8 @@ def main():
         print("6. Find Height")
         print("7. Check Balance")
         print("8. Exit")
-
+        print()
+        
         choice = input("Enter your choice: ").strip()
 
         # Insert 
