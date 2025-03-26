@@ -7,7 +7,6 @@ Student 2: Minh Quoc Chau Cao (21803620)
 
 import numpy as np
 
-
 # Implement the DSAQueue class
 class DSAQueue:
     def __init__(self, capacity=100):

@@ -11,7 +11,7 @@ Practical 04 of Data Structures and Algorithms COMP5008
 - UML_Diagram.pdf - UML Diagram for class definition
 
 ## Dependencies
-none
+- numpy
  
 ## Version information
 <19-03-2025> - initial version of Practical 04 programs
