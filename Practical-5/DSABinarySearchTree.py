@@ -98,6 +98,7 @@ class DSABinarySearchTree:
                 successor.set_left(cur_node.get_left())
                 return successor
         return cur_node
+    
     def _promote_successor(self, cur_node):
         """Recursively promote the successor node"""
         if cur_node.get_left() is None:
@@ -123,7 +124,7 @@ class DSABinarySearchTree:
         else:
             return self._find_recursive(key, cur_node.get_right())
         
-     # ----------------- Min/Max Methods -----------------
+    # ----------------- Min/Max Methods -----------------
     def min(self):
         """Find the minimum node in the tree"""
         if self._root is None:
@@ -162,7 +163,7 @@ class DSABinarySearchTree:
         #print(f"Node: {cur_node.get_key()}, left={left_height}, right={right_height}")
         return 1 + max(left_height, right_height)
 
-     # ----------------- Balance Methods -----------------
+    # ----------------- Balance Methods -----------------
     def balance(self):
         """Check the balance of the tree"""
         if self._root is None:
@@ -215,6 +216,7 @@ class DSABinarySearchTree:
             self._post_order_recursive(cur_node.get_right(), queue)
             queue.enqueue(cur_node.get_key())
 
+    # Display
     def display(self):
         """Display the tree using in-order, pre-order and post-order traversal"""
         print("......Inorder Traversal:", self.in_order())
