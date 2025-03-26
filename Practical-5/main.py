@@ -34,7 +34,11 @@ def main():
                 except Exception as e: 
                     print_error(f"You enter an invalid value ({e})")
             value = input("Enter value for the node: ").strip()
-            tree.insert(key, value)
+            try:
+                tree.insert(key, value)
+                print(f'...........Insert ({key}:{value}): done')
+            except Exception as e: 
+                print_error(f'...........Insert ({key}:{value}) error: {e}')
         # Delete
         elif choice == '2':
             key = int(input("Enter key to delete: "))
@@ -101,7 +105,7 @@ def test_tree():
     tree.insert(10, "Ten")
     tree.insert(7, "Seven")
     tree.insert(9, "Nine")
-    #tree.insert(1, "One")
+    tree.insert(1, "One")
     tree.insert(11, "Eleven")
     tree.insert(6, "Six")
     print("...........Add done\n")
@@ -154,6 +158,7 @@ def test_tree():
         except Exception as e: 
             print_error(f"...........Delete key={k}: failed (reason: {e})")
     
+    tree.insert(5, '5')
     # Display
     print()
     print_info("> Displaying the tree:")
@@ -162,7 +167,7 @@ def test_tree():
 
 if __name__ == "__main__":
     # Create some testcases for the tree
-    test_tree()
+    #test_tree()
 
     # Run the main function
     main()
