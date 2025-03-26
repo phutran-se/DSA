@@ -100,7 +100,7 @@ def test_tree():
     tree.insert(10, "Ten")
     tree.insert(7, "Seven")
     tree.insert(9, "Nine")
-    tree.insert(1, "One")
+    #tree.insert(1, "One")
     tree.insert(11, "Eleven")
     tree.insert(6, "Six")
     print("...........Add done\n")
@@ -108,6 +108,15 @@ def test_tree():
     # Display
     print_info("> Displaying the tree:")
     tree.display()
+    print()
+
+    # Find key 
+    print_info("> Find key:")
+    for kk in [8, 20]:
+        try: 
+            print(f"...........Found: key={kk}, value={tree.find(kk)}")
+        except Exception as e: 
+            print_error(f"...........Error: key={kk}, error = {e}")
     print()
 
     # Find min
@@ -155,4 +164,4 @@ if __name__ == "__main__":
     test_tree()
 
     # Run the main function
-    #main()
+    main()

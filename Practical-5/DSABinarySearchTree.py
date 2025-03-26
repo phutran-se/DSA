@@ -82,30 +82,35 @@ class DSABinarySearchTree:
         """Recursively delete a node from the tree"""
         if cur_node is None:
             raise ValueError("Key not found")
-
         if key < cur_node.get_key():
-            n = self._delete_recursive(key, cur_node.get_left())
-            cur_node.set_left(n)
+            cur_node.set_left(self._delete_recursive(key, cur_node.get_left()))
         elif key > cur_node.get_key():
-            n = self._delete_recursive(key, cur_node.get_right())
-            cur_node.set_right(n)
+            cur_node.set_right(self._delete_recursive(key, cur_node.get_right()))
         else:
             if cur_node.get_left() is None:
                 return cur_node.get_right()
             elif cur_node.get_right() is None:
                 return cur_node.get_left()
-            min_node = self._min_recursive(cur_node.get_right())
-            cur_node.set_key(min_node.get_key())
-            cur_node.set_value(min_node.get_value())
-            
-            rn = self._delete_recursive(min_node.get_key(), cur_node.get_right())
-            cur_node.set_right(rn)
+            else:
+                successor = self._promote_successor(cur_node.get_right())
+                if successor != cur_node.get_right():
+                    successor.set_right(cur_node.get_right())
+                successor.set_left(cur_node.get_left())
+                return successor
         return cur_node
-
+    def _promote_successor(self, cur_node):
+        """Recursively promote the successor node"""
+        if cur_node.get_left() is None:
+            return cur_node
+        successor = self._promote_successor(cur_node.get_left())
+        if successor == cur_node.get_left():
+            cur_node.set_left(successor.get_right())
+        return successor
+    
     # ----------------- Find Methods -----------------
     def find(self, key):
         """Find a node in the tree"""
-        return self._find_rec(key, self._root)
+        return self._find_recursive(key, self._root)
     
     def _find_recursive(self, key, cur_node):
         """Recursively find a node in the tree"""
@@ -114,9 +119,9 @@ class DSABinarySearchTree:
         if key == cur_node.get_key():
             return cur_node.get_value()
         elif key < cur_node.get_key():
-            return self._find_rec(key, cur_node.get_left())
+            return self._find_recursive(key, cur_node.get_left())
         else:
-            return self._find_rec(key, cur_node.get_right())
+            return self._find_recursive(key, cur_node.get_right())
         
      # ----------------- Min/Max Methods -----------------
     def min(self):
@@ -127,9 +132,9 @@ class DSABinarySearchTree:
 
     def _min_recursive(self, cur_node):
         """Recursively find the minimum node in the tree"""
-        while cur_node.get_left():
-            cur_node = cur_node.get_left()
-        return cur_node
+        if cur_node.get_left() is None:
+            return cur_node
+        return self._min_recursive(cur_node.get_left())
 
     def max(self):
         """Find the maximum node in the tree"""
@@ -139,9 +144,9 @@ class DSABinarySearchTree:
 
     def _max_recursive(self, cur_node):
         """Recursively find the maximum node in the tree"""
-        while cur_node.get_right():
-            cur_node = cur_node.get_right()
-        return cur_node
+        if cur_node.get_right() is None:
+            return cur_node
+        return self._max_recursive(cur_node.get_right())
     
     # ----------------- Height Methods -----------------
     def height(self):
@@ -160,15 +165,15 @@ class DSABinarySearchTree:
      # ----------------- Balance Methods -----------------
     def balance(self):
         """Check the balance of the tree"""
-        return self._balance_recursive(self._root)
-
-    def _balance_recursive(self, cur_node):
-        """Recursively check the balance of the tree"""
-        if cur_node is None:
-            return 0
-        left_height = self._height_recursive(cur_node.get_left())
-        right_height = self._height_recursive(cur_node.get_right())
-        return left_height - right_height
+        if self._root is None:
+            return 100.0
+        left_height = self._height_recursive(self._root.get_left())
+        right_height = self._height_recursive(self._root.get_right())
+        total_height = max(left_height, right_height) + 1
+        diff = abs(left_height - right_height)
+        #print(f"total height: {total_height}")
+        #print(f"diff: {diff}")
+        return (1 - diff / total_height) * 100 if total_height > 0 else 100.0
 
     # ----------------- Traversal Methods -----------------
     def in_order(self):
