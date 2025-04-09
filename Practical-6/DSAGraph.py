@@ -6,7 +6,7 @@ Student 2: Minh Quoc Chau Cao (21803620)
 """
 
 import numpy as np
-from DSALinkedList import DSALinkedList, DSAListNode
+from DSALinkedList import DSALinkedList
 from DSAQueue import DSAQueue
 from DSAStack import DSAStack
 

@@ -6,8 +6,8 @@ Student 2: Minh Quoc Chau Cao (21803620)
 """
 
 from DSAGraph import DSAGraph
-from GUI import draw_graph  # Assuming this is where draw_graph lives
-from Funct import *  # Assuming print_info and print_error are defined here
+from GUI import draw_graph 
+from Funct import *  
 
 SHOW_GUI = False
 
