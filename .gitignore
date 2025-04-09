@@ -1,6 +1,6 @@
 # Byte-compiled / optimized / DLL files
 
-
+*.csv
 Prac*_21985654.zip
 
 .vscode/
