@@ -50,6 +50,8 @@ def main():
             hash_table.remove("John")
             print("Removed 'John'")
         
+        find_by(hash_table, '14009992')
+
         # Try to save to output
         print("\n=== Save to output.csv ====")
         hash_table.save_to_csv("output.csv")
