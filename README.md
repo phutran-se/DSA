@@ -25,7 +25,6 @@ Data Structure and Algorithms
 - Graphs
 - Implement DSAGraphNode and DSAGraph
 
-
 ### Week 7
 - Hash Table
 - Implement DSAHashEntry and DSAHashTable
