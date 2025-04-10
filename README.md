@@ -16,3 +16,16 @@ Data Structure and Algorithms
 ### Week 4 
 - Linked List
 - Implement DSAStack and DSAQueue with LinkedList
+
+### Week 5
+- Binary Search Tree
+- Implement DSATreeNode and DSABinaryTree
+
+### Week 6
+- Graphs
+- Implement DSAGraphNode and DSAGraph
+
+
+### Week 7
+- Hash Table
+- Implement DSAHashEntry and DSAHashTable
