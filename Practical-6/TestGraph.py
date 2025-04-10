@@ -22,6 +22,7 @@ def test_graph():
     graph.add_vertex("C")
     graph.add_vertex("D")
     graph.add_vertex("E")
+    graph.add_vertex("G")
 
     print(f"Vertex count after adding A, B, C, D, E: {graph.get_vertex_count()}")  # Expected: 5
     print(f"Has vertex 'A': {graph.has_vertex('A')}")  # Expected: True
@@ -34,6 +35,7 @@ def test_graph():
     graph.add_edge("C", "D")
     graph.add_edge("A", "E")
     graph.add_edge("D", "E")
+    graph.add_edge("D", "G")
     #graph.add_edge("C", "F", False) # Check with not existed vertex F
 
 
@@ -85,6 +87,9 @@ def test_graph():
     # Expected output (assuming adjacency order B, C, E):
     # DFS Traversal: ('A', 'B') ('B', 'D') ('D', 'E') ('E', 'C')
 
+    if SHOW_GUI:
+        draw_graph(graph, "(created)")
+        
     # Test 5: Delete an edge (A-B)
     print("\n=== Deleting Edge A-B ===")
     graph.delete_edge("A", "B")
