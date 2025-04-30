@@ -101,7 +101,7 @@ def main():
     """ 
     Main function to test sorting algorithms and generate runtime table
     """
-    sizes = [1000, 10000, 50000, 100000]  # Array sizes to test
+    sizes = [1000, 5000, 10000, 20000]  # Array sizes to test
     sortTypes = [
         ("b", "BubbleSort"),
         ("i", "InsertionSort"),
@@ -146,7 +146,7 @@ def main():
             f.write(f"{n} | {arrayName} | {sortName} | {timeMs:.2f}\n")
 
 if __name__ == "__main__":
-    sys.setrecursionlimit(20000)
+    sys.setrecursionlimit(21000)
     try: 
         main()
     except Exception as e: 
