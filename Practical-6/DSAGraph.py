@@ -15,7 +15,7 @@ class DSAGraphNode:
     def __init__(self, label, value=None):
         self.label = label
         self.value = value
-        self.adjacent = DSALinkedList() # Using your DSALinkedList for adjacency
+        self.adjacent = DSALinkedList() # Using DSALinkedList for adjacency
         self.visited = False
     
     def add_edge(self, vertex):
@@ -46,7 +46,7 @@ class DSAGraphNode:
 # ------------------------------------------------------------------------------
 class DSAGraph:
     def __init__(self):
-        self.vertices = DSALinkedList()  # Using your DSALinkedList for vertices
+        self.vertices = DSALinkedList()  # Using DSALinkedList for vertices
     
     def add_vertex(self, label, value=None):
         """
