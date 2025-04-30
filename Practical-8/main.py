@@ -54,8 +54,27 @@ def sort_numbers(numbers):
     sorted_numbers = [entry.get_value() for entry in sorted_array]
     return sorted_numbers
 
-def test_heap():
-    print_info2("\n==== Test DSAHeap =====")
+def test_heap1():
+    print_info("\n==== Test DSAHeap (1) =====")
+    heap = DSAHeap(10)
+    heap.add(4, 4)
+    heap.add(10, 10)
+    heap.add(3, 3)
+    heap.add(5, 5)
+    heap.add(1, 1)
+    
+    print_info("Heap contents:")
+    heap.display()
+    
+    print_info("\nRemoving highest priority:")
+    entry = heap.remove()
+    print_info(f"Removed: Priority={entry.get_priority()}, Value={entry.get_value()}")
+    
+    print_info("\nHeap after removal:")
+    heap.display()
+
+def test_heap2():
+    print_info2("\n==== Test DSAHeap (2) =====")
     heap = DSAHeap(10)
     heap.add(120, "David")
     heap.add(110, "Wilson")
@@ -89,15 +108,16 @@ def test_heap_sort_numbers():
 
 def test_heap_sort():
     print_info2("\n==== Test Heap Sort (CSV) =====")
-    print_info("Sorting CSV file (first 10 entries for brevity):")
+    print_info("Sorting CSV file (first 20 entries for brevity):")
     sorted_array = read_and_sort_csv("RandomNames7000.csv", limit=7000)
-    for entry in sorted_array[:10]:  # Show first 10 sorted entries
+    for entry in sorted_array[:20]:  # Show first 20 sorted entries
         print_info(f"Priority={entry.get_priority()}, Value={entry.get_value()}")
 
 if __name__ == "__main__":
     # Test heap implementation
     try:
-        test_heap()
+        test_heap1()
+        test_heap2()
     except Exception as e:
         print_error(f'> [ERROR] heap: {e}')
     

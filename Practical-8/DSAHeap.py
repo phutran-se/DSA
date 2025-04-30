@@ -32,150 +32,147 @@ class DSAHeapEntry:
         """
         self._value = value
 
+
 class DSAHeap:
-    """Max Heap implementation using an array-based approach."""
+    """
+    Max Heap implementation using an array-based approach.
+    """
     def __init__(self, capacity=10000):
-        """Initialize an empty heap with given capacity."""
+        """
+        Initialize an empty heap with given capacity.
+        """
         self._heap = np.array([None] * capacity, dtype=object)
         self._count = 0
 
     def add(self, priority, value):
         """
-        Add a new entry to the heap and maintain heap property.
+        Add a new entry to the heap and maintain the max-heap property.
         """
         if self._count >= len(self._heap):
             raise ValueError("Heap is full")
-        
-        # Add at the end
+
+        # Add new entry at the end
         self._heap[self._count] = DSAHeapEntry(priority, value)
         self._count += 1
-        # Trickle up to restore heap property
+
+        # Move it up to correct position
         self._trickle_up(self._count - 1)
 
     def remove(self):
         """
-        Remove and return the highest priority entry.
+        Remove and return the highest priority (root) entry.
         """
         if self._count == 0:
             raise ValueError("Heap is empty")
-        
+
         # Store root to return
         result = self._heap[0]
+
         # Move last element to root
         self._heap[0] = self._heap[self._count - 1]
         self._count -= 1
-        # Trickle down to restore heap property
+
+        # Restore heap property
         if self._count > 0:
             self._trickle_down(0)
-        
+
         return result
 
     def _trickle_up(self, index):
         """
-        Trickle up the element at index to restore heap property.
+        Move the element at index up to its correct position.
         """
         parent_idx = (index - 1) // 2
-        
         while index > 0 and self._heap[index].get_priority() > self._heap[parent_idx].get_priority():
-            # Swap with parent
             self._heap[index], self._heap[parent_idx] = self._heap[parent_idx], self._heap[index]
             index = parent_idx
             parent_idx = (index - 1) // 2
 
     def _trickle_down(self, index):
         """
-        Trickle down the element at index to restore heap property.
+        Move the element at index down to its correct position.
         """
-        left_child_idx = 2 * index + 1
-        right_child_idx = 2 * index + 2
-        largest_idx = index
+        while True:
+            left = 2 * index + 1
+            right = 2 * index + 2
+            largest = index
 
-        # Check if left child exists and is larger
-        if left_child_idx < self._count and self._heap[left_child_idx].get_priority() > self._heap[largest_idx].get_priority():
-            largest_idx = left_child_idx
-        
-        # Check if right child exists and is larger
-        if right_child_idx < self._count and self._heap[right_child_idx].get_priority() > self._heap[largest_idx].get_priority():
-            largest_idx = right_child_idx
-        
-        # If largest is not the current index, swap and continue
-        if largest_idx != index:
-            self._heap[index], self._heap[largest_idx] = self._heap[largest_idx], self._heap[index]
-            self._trickle_down(largest_idx)
+            if left < self._count and self._heap[left].get_priority() > self._heap[largest].get_priority():
+                largest = left
+
+            if right < self._count and self._heap[right].get_priority() > self._heap[largest].get_priority():
+                largest = right
+
+            if largest != index:
+                self._heap[index], self._heap[largest] = self._heap[largest], self._heap[index]
+                index = largest
+            else:
+                break
 
     def display(self):
         """
-        Display the heap entries.
+        Display all entries in the heap.
         """
         for i in range(self._count):
             entry = self._heap[i]
             print(f"Index {i}: Priority={entry.get_priority()}, Value={entry.get_value()}")
 
+
 def heapify(heap_array, num_items):
     """
-    Convert an array into a max heap.
+    Convert an array into a max-heap.
     """
-    # Start from last non-leaf node
     for i in range(num_items // 2 - 1, -1, -1):
-        # Trickle down to place element in correct position
-        left_child_idx = 2 * i + 1
-        right_child_idx = 2 * i + 2
-        largest_idx = i
+        index = i
+        while True:
+            left = 2 * index + 1
+            right = 2 * index + 2
+            largest = index
 
-        if left_child_idx < num_items and heap_array[left_child_idx].get_priority() > heap_array[largest_idx].get_priority():
-            largest_idx = left_child_idx
-        
-        if right_child_idx < num_items and heap_array[right_child_idx].get_priority() > heap_array[largest_idx].get_priority():
-            largest_idx = right_child_idx
-        
-        if largest_idx != i:
-            heap_array[i], heap_array[largest_idx] = heap_array[largest_idx], heap_array[i]
-            # Recursively trickle down
-            left_child_idx = 2 * largest_idx + 1
-            right_child_idx = 2 * largest_idx + 2
-            while left_child_idx < num_items:
-                largest_idx = left_child_idx
-                if right_child_idx < num_items and heap_array[right_child_idx].get_priority() > heap_array[left_child_idx].get_priority():
-                    largest_idx = right_child_idx
-                if heap_array[largest_idx].get_priority() <= heap_array[i].get_priority():
-                    break
-                heap_array[largest_idx], heap_array[i] = heap_array[i], heap_array[largest_idx]
-                left_child_idx = 2 * largest_idx + 1
-                right_child_idx = 2 * largest_idx + 2
+            if left < num_items and heap_array[left].get_priority() > heap_array[largest].get_priority():
+                largest = left
+
+            if right < num_items and heap_array[right].get_priority() > heap_array[largest].get_priority():
+                largest = right
+
+            if largest != index:
+                heap_array[index], heap_array[largest] = heap_array[largest], heap_array[index]
+                index = largest
+            else:
+                break
+
 
 def heap_sort(array, num_items):
     """
-    Sort an array of DSAHeapEntry objects using HeapSort (ascending order).
+    Sort an array of DSAHeapEntry objects in ascending order using HeapSort.
     """
-    # Heapify the array (creates a max-heap)
+    # Step 1: Build a max-heap
     heapify(array, num_items)
-    
-    # Extract elements one by one
-    for i in range(num_items - 1, -1, -1):
-        # Swap root with the last element
-        array[0], array[i] = array[i], array[0]
-        # Reduce heap size
-        num_items -= 1
-        # Trickle down to restore heap property
-        curr_idx = 0
-        while True:
-            left_child_idx = 2 * curr_idx + 1
-            right_child_idx = 2 * curr_idx + 2
-            largest_idx = curr_idx
 
-            # Check left child
-            if left_child_idx < num_items and array[left_child_idx].get_priority() > array[largest_idx].get_priority():
-                largest_idx = left_child_idx
-            
-            # Check right child
-            if right_child_idx < num_items and array[right_child_idx].get_priority() > array[largest_idx].get_priority():
-                largest_idx = right_child_idx
-            
-            # If largest is not current, swap and continue
-            if largest_idx != curr_idx:
-                array[curr_idx], array[largest_idx] = array[largest_idx], array[curr_idx]
-                curr_idx = largest_idx
+    # Step 2: Repeatedly move the largest element (root) to the end
+    for end in range(num_items - 1, 0, -1):
+        # Swap the root with the current last element
+        array[0], array[end] = array[end], array[0]
+
+        # Trickle down the new root in the reduced heap
+        curr_idx = 0
+        heap_size = end
+
+        while True:
+            left = 2 * curr_idx + 1
+            right = 2 * curr_idx + 2
+            largest = curr_idx
+
+            if left < heap_size and array[left].get_priority() > array[largest].get_priority():
+                largest = left
+
+            if right < heap_size and array[right].get_priority() > array[largest].get_priority():
+                largest = right
+
+            if largest != curr_idx:
+                array[curr_idx], array[largest] = array[largest], array[curr_idx]
+                curr_idx = largest
             else:
                 break
-    
+
     return array
