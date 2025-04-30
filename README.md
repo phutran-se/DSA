@@ -28,3 +28,11 @@ Data Structure and Algorithms
 ### Week 7
 - Hash Table
 - Implement DSAHashEntry and DSAHashTable
+
+### Week 8
+- Heap
+- Implement DSAHeapEntry and DSAHeap
+- Implement Heap Sort
+
+### Week 9
+- Implement Merge Sort and Quick Sort
