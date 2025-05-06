@@ -28,15 +28,14 @@ NEARLY_PERCENT = 0.10 # % of items to move in nearly sorted array
 RANDOM_TIMES = 100    # Number of times to randomly swap elements in array
 
 def generateArray(n, arrayType):
-    """
-      Generate an array of size n with the specified type
+    """ Generate an array of size n with the specified type
     Args:
         n (int): Size of the array
         arrayType (str): Type of array ('a': ascending, 'd': descending, 'r': random, 'n': nearly sorted)
     Returns:
-        list: Generated array
+        list: Generated array (converted to Python list)
     """
-    A = list(range(1, n + 1))  # Create array with values from 1 to n
+    A = np.arange(1, n + 1, 1)  # Create NumPy array with values from 1 to n
 
     if arrayType == 'a':
         pass  # Already ascending
@@ -56,7 +55,7 @@ def generateArray(n, arrayType):
     else:
         raise ValueError("Unsupported array type")
     
-    return A
+    return A.tolist()  # Convert NumPy array to Python list
 
 def doSort(n, sortType, arrayType):
     """ Perform the specified sort on an array of the given type
@@ -98,8 +97,7 @@ def doSort(n, sortType, arrayType):
     return endTime - startTime
 
 def main():
-    """ 
-    Main function to test sorting algorithms and generate runtime table
+    """ Main function to test sorting algorithms and generate runtime table
     """
     sizes = [1000, 5000, 10000, 20000]  # Array sizes to test
     sortTypes = [
@@ -145,9 +143,26 @@ def main():
             print(f"{n} | {arrayName} | {sortName} | {timeMs:.2f}")
             f.write(f"{n} | {arrayName} | {sortName} | {timeMs:.2f}\n")
 
+def test_sort_by(n, sortType, arrayType):
+    print_info("\n* TEST SORT BY")
+    runningTotal = 0
+    for _ in range(REPEATS):
+        startTime = timeit.default_timer()
+        doSort(n, sortType, arrayType)
+        endTime = timeit.default_timer()
+        runningTotal += (endTime - startTime)
+
+    print_info2(f"> Done: sortType={sortType}, arrayType={arrayType}, n={n}, time={str(runningTotal/(REPEATS - 1))}")
+    print()
+    
+
 if __name__ == "__main__":
+    # set stack size
     sys.setrecursionlimit(21000)
-    try: 
+    try:
         main()
-    except Exception as e: 
+
+        # test sort by
+        #test_sort_by(100, 'q', 'r')
+    except Exception as e:
         print_error(f"> [ERROR] exception: {e}")

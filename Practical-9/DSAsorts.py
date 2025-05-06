@@ -159,7 +159,8 @@ def merge(A, leftIdx, midIdx, rightIdx):
 
 # ============== QUICK SORT ==============
 def quickSort(A):
-    """ quickSort - front-end for kick-starting the recursive algorithm with left-most pivot
+    """ 
+    quickSort - front-end for kick-starting the recursive algorithm with left-most pivot
     Args:
         A (list): Array to be sorted
     """
@@ -184,7 +185,8 @@ def quickSortRecurse(A, leftIdx, rightIdx):
             quickSortRecurse(A, newPivotIdx + 1, rightIdx)
 
 def doPartitioning(A, leftIdx, rightIdx, pivotIdx):
-    """ doPartitioning - partitions the array around the pivot
+    """ 
+    doPartitioning - partitions the array around the pivot
     Args:
         A (list): Array to be partitioned
         leftIdx (int): Starting index of the subarray
@@ -209,7 +211,8 @@ def doPartitioning(A, leftIdx, rightIdx, pivotIdx):
     return currIdx
 
 def quickSortMedian3(A):
-    """ quickSortMedian3 - front-end for QuickSort with median-of-three pivot
+    """ 
+    quickSortMedian3 - front-end for QuickSort with median-of-three pivot
     Args:
         A (list): Array to be sorted
     """
@@ -217,7 +220,8 @@ def quickSortMedian3(A):
         quickSortMedian3Recurse(A, 0, len(A) - 1)
 
 def quickSortMedian3Recurse(A, leftIdx, rightIdx):
-    """ quickSortMedian3Recurse - recursive QuickSort with median-of-three pivot
+    """ 
+    quickSortMedian3Recurse - recursive QuickSort with median-of-three pivot
     Args:
         A (list): Array to be sorted
         leftIdx (int): Starting index of the subarray
@@ -232,7 +236,8 @@ def quickSortMedian3Recurse(A, leftIdx, rightIdx):
             quickSortMedian3Recurse(A, newPivotIdx + 1, rightIdx)
 
 def getMedianOfThree(A, leftIdx, rightIdx):
-    """ getMedianOfThree - selects the median of the first, middle, and last elements as pivot
+    """ 
+    getMedianOfThree - selects the median of the first, middle, and last elements as pivot
     Args:
         A (list): Array to select pivot from
         leftIdx (int): Starting index of the subarray
@@ -251,7 +256,8 @@ def getMedianOfThree(A, leftIdx, rightIdx):
     return midIdx  # Middle element is the median
 
 def quickSortRandom(A):
-    """ quickSortRandom - front-end for QuickSort with random pivot
+    """ 
+    quickSortRandom - front-end for QuickSort with random pivot
     Args:
         A (list): Array to be sorted
     """
@@ -259,7 +265,8 @@ def quickSortRandom(A):
         quickSortRandomRecurse(A, 0, len(A) - 1)
 
 def quickSortRandomRecurse(A, leftIdx, rightIdx):
-    """ quickSortRandomRecurse - recursive QuickSort with random pivot
+    """ 
+    quickSortRandomRecurse - recursive QuickSort with random pivot
     Args:
         A (list): Array to be sorted
         leftIdx (int): Starting index of the subarray
