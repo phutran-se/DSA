@@ -1,3 +1,10 @@
+'''
+DSAsorts.py - sorting methods
+
+Student 1: Phu Tran (21985654)
+Student 2: Minh Quoc Chau Cao (21803620)
+'''
+
 import random
 import DSAsorts
 from Funct import *
