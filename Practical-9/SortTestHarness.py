@@ -28,7 +28,8 @@ NEARLY_PERCENT = 0.10 # % of items to move in nearly sorted array
 RANDOM_TIMES = 100    # Number of times to randomly swap elements in array
 
 def generateArray(n, arrayType):
-    """ Generate an array of size n with the specified type
+    """ 
+    Generate an array of size n with the specified type
     Args:
         n (int): Size of the array
         arrayType (str): Type of array ('a': ascending, 'd': descending, 'r': random, 'n': nearly sorted)
@@ -97,7 +98,8 @@ def doSort(n, sortType, arrayType):
     return endTime - startTime
 
 def main():
-    """ Main function to test sorting algorithms and generate runtime table
+    """
+    Main function to test sorting algorithms and generate runtime table
     """
     sizes = [1000, 5000, 10000, 20000]  # Array sizes to test
     sortTypes = [
